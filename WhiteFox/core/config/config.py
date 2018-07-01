@@ -1,4 +1,5 @@
 import json
+import os
 
 
 class DiscordConfig(object):
@@ -7,6 +8,9 @@ class DiscordConfig(object):
         self.raw = client_config
         for config in self.raw:
             self.__setattr__(config, self.raw[config])
+        token = os.getenv("DiscordToken")
+        if token is not None:
+            self.token = token
 
 
 class FoxConfig(object):
